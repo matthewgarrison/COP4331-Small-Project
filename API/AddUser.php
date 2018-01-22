@@ -10,7 +10,7 @@
 	// Server info for connection
 	$servername = "localhost";
 	$dbUName = "NewUser";
-	$dbPwd = "YES12345";
+	$dbPwd = "YESYES";
 	$dbName = "contactManager";
 	
 	// Connect to database
