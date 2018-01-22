@@ -6,9 +6,9 @@
 	
 	// Server info for connection
 	$servername = "localhost";
-	$dbUName = "username";
-	$dbPwd = "password";
-	$dbName = "COP4331";
+	$dbUName = "NewUser";
+	$dbPwd = "YES12345";
+	$dbName = "contactManager";
 	
 	$id = 0;
 	$username = $inData["login"];
