@@ -10,15 +10,15 @@
 			<form>
 				<div class="form-group">
 				<label for="form-username">Username</label>
-				<input type="text" class="form-control" id="form-name" value="" name="username" />
+				<input type="text" class="form-control" id="form-username" value="" name="username" />
 				</div>
 				<div class="form-group">
 					<label for="form-password">Password</label>
-					<input type="text" class="form-control" id="form-ucfid" value="" name="pass" />
+					<input type="text" class="form-control" id="form-password" value="" name="pass" />
 				</div>
 				<div class="form-group">
 					<label for="form-password-confirm">Confirm Password</label>
-					<input type="text" class="form-control" id="form-ucfid" value="" name="passconfirm" />
+					<input type="text" class="form-control" id="form-password-confirm" value="" name="password-confirm" />
 				</div>
 
 				<button class="btn btn-defualt" id="form-create">Create Account</button>
