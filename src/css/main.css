@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Muli:400,400italic,300);
+
+body {
+    font-family: 'Muli', sans-serif;
+    font-size:12pt;
+}
+
+.container {
+    padding: 20px 0px 0px 0px;
+}
+
+.center-contents {
+    margin:auto;
+    padding:auto;
+}
+
+.footer {
+    text-align: center;
+    padding-top:80px;
+    padding-left: 20px;
+    padding-right:20px;
+}
