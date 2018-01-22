@@ -5,20 +5,24 @@
 	<div class="row justify-content-center">
 		<div class="col-md-6">
 
-			<h1 class="page-title">Create Account</h1>
+			<h1 class="page-title">Create an Account</h1>
 					
 			<form>
 				<div class="form-group">
-				<label for="form-name">Username:</label>
-				<input type="text" class="form-control" id="form-name" placeholder="Jane Doe" value="" name="name" />
-			</div>
-			<div class="form-group">
-				<label for="form-pid">Password</label>
-				<input type="text" class="form-control" id="form-ucfid" placeholder="1234567" value="" name="ucfid" />
-			</div>
-			</form>
+				<label for="form-username">Username</label>
+				<input type="text" class="form-control" id="form-name" value="" name="username" />
+				</div>
+				<div class="form-group">
+					<label for="form-password">Password</label>
+					<input type="text" class="form-control" id="form-ucfid" value="" name="pass" />
+				</div>
+				<div class="form-group">
+					<label for="form-password-confirm">Confirm Password</label>
+					<input type="text" class="form-control" id="form-ucfid" value="" name="passconfirm" />
+				</div>
 
-			<p><a href="/login">Create Account</a></p>
+				<button class="btn btn-defualt" id="form-create">Create Account</button>
+			</form>
 		</div>
 	</div>
 </div>
