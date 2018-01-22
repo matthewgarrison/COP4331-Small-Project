@@ -9,16 +9,18 @@
 					
 			<form>
 				<div class="form-group">
-				<label for="form-username">Username:</label>
-				<input type="text" class="form-control" id="form-name" value="" name="name" />
-			</div>
-			<div class="form-password">
-				<label for="form-pid">Password</label>
-				<input type="text" class="form-control" id="form-ucfid" value="" name="ucfid" />
-			</div>
+					<label for="form-username">Username</label>
+					<input type="text" class="form-control" id="form-username" value="" name="username" />
+				</div>
+				<div class="form-group">
+					<label for="form-password">Password</label>
+					<input type="text" class="form-control" id="form-password" value="" name="password" />
+				</div>
+						
+				<div><button class="btn btn-defualt" id="form-login">Login</button></div>
 			</form>
 
-			<p style="padding-top: 15px"><a href="/createaccount">Create Account</a></p>
+			<p style="padding-top: 25px"><a href="/createaccount">Don't have an account? Create one.</a></p>
 		</div>
 	</div>
 </div>
