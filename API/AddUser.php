@@ -9,9 +9,9 @@
 	
 	// Server info for connection
 	$servername = "localhost";
-	$dbUName = "username";
-	$dbPwd = "password";
-	$dbName = "COP4331";
+	$dbUName = "NewUser";
+	$dbPwd = "YES12345";
+	$dbName = "contactManager";
 	
 	// Connect to database
 	$conn = new mysqli($servername, $dbUName, $dbPwd, $dbName);
