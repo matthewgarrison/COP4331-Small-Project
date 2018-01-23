@@ -1,5 +1,4 @@
 <?php
-
 	// Assumes the input is a JSON file in the format of {"username":"", "password":""}
 	
 	$inData = getRequestInfo();
@@ -11,7 +10,8 @@
 	$dbName = "contactManager";
 	
 	$id = 0;
-	$username = trimAndSanitize($inData["login"]);
+	$username = trimAndSanitize($inData["username"]);
+	$password = $inData["password"];
 	
 	$error_occurred = false;
 	
@@ -22,7 +22,7 @@
 		returnWithError($conn->connect_error);
 	}
 	else{
-		$sql = "SELECT USER_ID FROM USERS where USERNAME = '" . $username . "' AND PASSWORD = '" . $inData["password"] . "'";
+		$sql = "SELECT USER_ID FROM USERS where USERNAME = '" . $username . "' AND PASSWORD = '" . $password . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0){
 			$row = $result->fetch_assoc();
@@ -46,7 +46,6 @@
 		$str = str_replace(";", "", $str);
 		return $str;
 	}
-
 	// Parse JSON file input
 	function getRequestInfo(){
 		return json_decode(file_get_contents('php://input'), true);
