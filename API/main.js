@@ -9,18 +9,16 @@ function doLogin() {
 	firstName = "";
 	lastName = "";
 
-	// replace with element id's from HTML file
-	var userName = document.getElementById("userName").value;
-	var password = document.getElementById("password").value;
+	var userName = document.getElementById("form-username").value;
+	var password = document.getElementById("form-password").value;
 
 	document.getElementById("loginResult").innerHTML = "";
 
 	// replace with appropriate varaible names
 	var payload = '{"login" : "' + userName + '", "password" : "' + password'"}';
-	var url = baseURL + "/Login.php";
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, false);
+	xhr.open("POST", baseURL + "/Login.php", false);
 	xhr.setRequestHeader("Content-type", "application/json");
 
 	try {
@@ -31,28 +29,30 @@ function doLogin() {
 		userID = data.id;
 
 		if(userID == 0) {
-			// update HTML content to display message
+			// update when result is implemented
 			document.getElementById('loginResult').innerHTML = "Incorrect username/password combination. Please try again.";
 			return;
 		}
 
+		// may change when displayname is implemented
 		firstName = data.firstName;
 		lastName = data.lastName;
 
-		// confirm ID from HTML file
+		// implement displayName later
 		document.getElementById('displayName').innerHTML = firstName + " " + lastName;
 
-		// confirm username and password IDs in HTML file
-		document.getElementById('userName').value = "";
-		document.getElementById('password').value = "";
+		document.getElementById('form-username').value = "";
+		document.getElementById('form-password').value = "";
 
-		// update to element ID from HTML file
-		showElement('accessUI', false);
-		showElement('loggedIn', false);
-		showElement('login', true);
+		// implement when more features complete
+		// showElement('access', true);
+		// showElement('loggedIn', true);
+		
+		// this ID only applies to the button; ask to update to ID for the entire form
+		showElement('form-login', false);
 	}
 	catch(error) {
-		// confirm HTML IDs
+		// include result of login in HTML
 		document.getElementById('loginResult').innerHTML = error.message;
 	}
 
@@ -69,6 +69,7 @@ function showElement(id, flag) {
 	}
 }
 
+// todo
 function searchContacts() {
 	document.getElementById("searchContacts").innerHTML = "";
 }
