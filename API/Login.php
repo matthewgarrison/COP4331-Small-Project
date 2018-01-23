@@ -22,7 +22,7 @@
 		returnWithError($conn->connect_error);
 	}
 	else{
-		$sql = "SELECT User ID FROM Users where Username = '" . $username . "' AND Password = '" . $inData["password"] . "'";
+		$sql = "SELECT USER_ID FROM USERS where USERNAME = '" . $username . "' AND PASSWORD = '" . $inData["password"] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0){
 			$row = $result->fetch_assoc();
