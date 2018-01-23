@@ -6,32 +6,46 @@
 	
 	// Server info for connection
 	$servername = "localhost";
-	$dbUName = "NewUser";
-	$dbPwd = "YESYES";
+	$dbUName = "Group7User";
+	$dbPwd = "Group7Pass";
 	$dbName = "contactManager";
 	
 	$id = 0;
-	$username = $inData["login"];
+	$username = trimAndSanitize($inData["login"]);
+	
+	$error_occurred = false;
 	
 	// Connect to database
 	$conn = new mysqli($servername, $dbUName, $dbPwd, $dbName);
 	if ($conn->connect_error){
+		$error_occurred = true;
 		returnWithError($conn->connect_error);
 	}
 	else{
-		$sql = "SELECT User ID FROM Users where Username = '" . $inData["login"] . "' AND Password = '" . $inData["password"] . "'";
+		$sql = "SELECT User ID FROM Users where Username = '" . $username . "' AND Password = '" . $inData["password"] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0){
 			$row = $result->fetch_assoc();
 			$id = $row["ID"];
 		}
 		else{
+			$error_occurred = true;
 			returnWithError( "No Records Found" );
 		}
 		$conn->close();
 	}
 	
-	returnWithInfo($username, $id);
+	if (!$error_occurred){
+		returnWithInfo($username, $id);
+	}
+	
+	// Removes whitespice at the front and back, and removes single quotes and semi-colons
+	function trimAndSanitize($str){
+		$str = trim($str);
+		$str = str_replace("'", "", $str );
+		str = str_replace(";", "", $str);
+		return $str;
+	}
 
 	// Parse JSON file input
 	function getRequestInfo(){
