@@ -4,30 +4,44 @@
 	
 	$inData = getRequestInfo();
 	
-	$uName = $inData["username"];
-	$pwd = $inData["password"];
+	$username = trimAndSanitize($inData["username"]);
+	$password = $inData["password"];
 	
 	// Server info for connection
 	$servername = "localhost";
-	$dbUName = "NewUser";
-	$dbPwd = "YESYES";
+	$dbUName = "Group7User";
+	$dbPwd = "Group7Pass";
 	$dbName = "contactManager";
+	
+	$error_occurred = false;
 	
 	// Connect to database
 	$conn = new mysqli($servername, $dbUName, $dbPwd, $dbName);
 	if ($conn->connect_error){
+		$error_occured = true;
 		returnWithError($conn->connect_error);
 	}
 	else{
-		$sql = "insert into Users (Username,Password) VALUES ('" . $Uname . "','" . $pwd . "')";
+		$sql = "insert into Users (Username,Password) VALUES ('" . $username . "','" . $password . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
+			$error_occurred = true;
 			returnWithError( $conn->error );
 		}
 		$conn->close();
 	}
 	
-	returnWithError("");
+	if (!$error_occurred){
+		returnWithError("");
+	}
+	
+	// Removes whitespice at the front and back, and removes single quotes and semi-colons
+	function trimAndSanitize($str){
+		$str = trim($str);
+		$str = str_replace("'", "", $str );
+		$str = str_replace(";", "", $str);
+		return $str;
+	}
 
 	function getRequestInfo()
 	{
