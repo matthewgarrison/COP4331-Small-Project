@@ -22,7 +22,7 @@
 		returnWithError($conn->connect_error);
 	}
 	else{
-		$sql = "insert into Users (Username,Password) VALUES ('" . $username . "','" . $password . "')";
+		$sql = "insert into USERS (USERNAME,PASSWORD) VALUES ('" . $username . "','" . $password . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			$error_occurred = true;
