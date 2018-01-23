@@ -43,7 +43,7 @@
 	function trimAndSanitize($str){
 		$str = trim($str);
 		$str = str_replace("'", "", $str );
-		str = str_replace(";", "", $str);
+		$str = str_replace(";", "", $str);
 		return $str;
 	}
 
