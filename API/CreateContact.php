@@ -38,7 +38,7 @@
 		returnWithError("");
 	}
 	
-	// Removes whitespice at the front and back, and removes single quotes and semi-colons
+	// Removes whitespace at the front and back, and removes single quotes and semi-colons
 	function trimAndSanitize($str){
 		$str = trim($str);
 		$str = str_replace("'", "", $str );

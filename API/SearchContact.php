@@ -1,5 +1,7 @@
 <?php
 
+	// Assumes the input is a JSON file in the format of {"searchResults":"", "searchCount":"", "searchName":"", "userID":""}
+
 	$inData = getRequestInfo();
 	
 	$searchResults = "";
@@ -43,6 +45,14 @@
 
 	returnWithInfo( $searchResults );
 
+	// Removes whitespace at the front and back, and removes single quotes and semi-colons
+	function trimAndSanitize($str){
+		$str = trim($str);
+		$str = str_replace("'", "", $str );
+		$str = str_replace(";", "", $str);
+		return $str;
+	}
+	
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
