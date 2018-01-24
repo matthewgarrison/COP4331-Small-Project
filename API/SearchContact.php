@@ -1,4 +1,7 @@
 <?php
+	// Expects input in the form of {"search":"", "uID":""}
+	// The results field in the output JSON is an array of strings formatted as "Contact ID: name, phone number, email, notes"
+	
 	$inData = getRequestInfo();
 	
 	$searchResults = "";
@@ -21,7 +24,7 @@
 	} 
 	else
 	{
-		$sql = "select NAME from CONTACTS where NAME like '%" . $searchName . "%' AND USER_ID = " . $userID;
+		$sql = "select * from CONTACTS where NAME like '%" . $searchName . "%' AND USER_ID = " . $userID;
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -32,7 +35,7 @@
 					$searchResults .= ",";
 				}
 				$searchCount++;
-				$searchResults .= '"' . $row["NAME"] . '"';
+				$searchResults .= '"' . $row["CONTACT_ID"] . ': ' . $row["NAME"] . ', ' . $row["PHONENUMBER"] . ', ' . $row["EMAIL"] . ', ' . $row["NOTES"] . '"';
 			}
 		}
 		else
