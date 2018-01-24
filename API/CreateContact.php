@@ -25,7 +25,7 @@
 		returnWithError($conn->connect_error);
 	}
 	else{
-		$sql = "insert into CONTACTS (USER_ID, NAME, PHONENUMBER, EMAIL, NOTES) VALUES ('" . $userID . "', '" . $name . "','" . $phoneNumber . "','" . $email . "','" . $notes . "')'";
+		$sql = "insert into CONTACTS (USER_ID, NAME, PHONENUMBER, EMAIL, NOTES) VALUES ('" . $userID . "', '" . $name . "','" . $phoneNumber . "','" . $email . "','" . $notes . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			$error_occurred = true;
