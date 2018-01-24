@@ -1,7 +1,5 @@
 <?php
 
-	// Assumes the input is a JSON file in the format of {"searchResults":"", "searchCount":"", "searchName":"", "userID":""}
-
 	$inData = getRequestInfo();
 	
 	$searchResults = "";
@@ -22,7 +20,7 @@
 	} 
 	else
 	{
-		$sql = "select Name from Contacts where Name like '%" . searchName . "%' AND USER_ID = " . $userID;
+		$sql = "select NAME from Contacts where NAME like '%" . searchName . "%' AND USER_ID = " . $userID;
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -33,7 +31,7 @@
 					$searchResults .= ",";
 				}
 				$searchCount++;
-				$searchResults .= '"' . $row["Name"] . '"';
+				$searchResults .= '"' . $row["NAME"] . '"';
 			}
 		}
 		else
@@ -52,7 +50,7 @@
 		$str = str_replace(";", "", $str);
 		return $str;
 	}
-	
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
@@ -66,7 +64,7 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"result":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
