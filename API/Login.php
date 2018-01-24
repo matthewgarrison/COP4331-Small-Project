@@ -11,7 +11,7 @@
 	
 	$id = 0;
 	$username = trimAndSanitize($inData["username"]);
-	$password = $inData["password"];
+	$password = trimAndSanitize($inData["password"]);
 	
 	$error_occurred = false;
 	
@@ -39,13 +39,14 @@
 		returnWithInfo($username, $id);
 	}
 	
-	// Removes whitespice at the front and back, and removes single quotes and semi-colons
+	// Removes whitespace at the front and back, and removes single quotes and semi-colons
 	function trimAndSanitize($str){
 		$str = trim($str);
 		$str = str_replace("'", "", $str );
 		$str = str_replace(";", "", $str);
 		return $str;
 	}
+	
 	// Parse JSON file input
 	function getRequestInfo(){
 		return json_decode(file_get_contents('php://input'), true);
