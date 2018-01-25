@@ -21,7 +21,7 @@
 	// Connect to database
 	$conn = new mysqli($servername, $dbUName, $dbPwd, $dbName);
 	if ($conn->connect_error){
-		$error_occured = true;
+		$error_occurred = true;
 		returnWithError($conn->connect_error);
 	}
 	else{
