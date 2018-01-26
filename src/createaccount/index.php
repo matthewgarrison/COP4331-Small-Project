@@ -14,14 +14,14 @@
 				</div>
 				<div class="form-group">
 					<label for="form-password">Password</label>
-					<input type="text" class="form-control" id="form-password" value="" name="password" />
+					<input type="password" class="form-control" id="form-password" value="" name="password" />
 				</div>
 				<div class="form-group">
 					<label for="form-password-confirm">Confirm Password</label>
-					<input type="text" class="form-control" id="form-password-confirm" value="" name="password-confirm" />
+					<input type="password" class="form-control" id="form-password-confirm" value="" name="password-confirm" />
 				</div>
 
-				<div><button class="btn btn-defualt" id="form-create" onclick="addUser()">Create Account</button></div>
+				<div><button class="btn btn-defualt" type="button" id="form-create" onclick="addUser()">Create Account</button></div>
 			</form>
 
 			<p id="passwordCompareAndCreateResult"></p>
