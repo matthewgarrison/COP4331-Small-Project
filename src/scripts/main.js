@@ -194,8 +194,8 @@ function addUser() {
 
 	var userName = document.getElementById("form-username").value;
 
-	var password = md5(document.getElementById("form-password").value);
-	var passwordConfirm = md5(document.getElementById("form-password-confirm").value);
+	var password = document.getElementById("form-password").value;
+	var passwordConfirm = document.getElementById("form-password-confirm").value;
 	if (password !== passwordConfirm) {
 		document.getElementById('passwordCompareAndCreateResult').innerHTML = "Your passwords do not match. Please try again.";
 		return;
@@ -216,10 +216,10 @@ function addUser() {
 		xhr.send(payload);
 
 		var data = JSON.parse(xhr.responseText);
-		error = data.error;
+		var error = data.error;
 
 		if(error !== "") {
-			document.getElementById('passwordCompareAndCreateResult').innerHTML = "There was an error. Please try again.";
+			document.getElementById('passwordCompareAndCreateResult').innerHTML = error;
 			return;
 		}
 
@@ -228,7 +228,7 @@ function addUser() {
 	}
 	catch(error) {
 		// include result of creation in HTML
-		document.getElementById('passwordCompareAndCreateResult').innerHTML = error.message + " Please try again.";
+		document.getElementById('passwordCompareAndCreateResult').innerHTML = error.message;
 	}
 
 }
