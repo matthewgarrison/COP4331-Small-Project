@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 
 		<!-- Scripts -->
+	    	<script src="scripts/code.js"/>
 
         
     </head>
