@@ -21,12 +21,13 @@
 					<input type="text" class="form-control" id="form-password-confirm" value="" name="password-confirm" />
 				</div>
 
-				<div><button class="btn btn-defualt" id="form-create">Create Account</button></div>
+				<div><button class="btn btn-defualt" id="form-create" onclick="addUser()">Create Account</button></div>
 			</form>
+
+			<p id="passwordCompareAndCreateResult"></p>
 		</div>
 	</div>
 </div>
 
 
 <?php include "../footer.php"; ?>
-
