@@ -17,7 +17,7 @@
 					<input type="text" class="form-control" id="form-password" value="" name="password" />
 				</div>
 
-				<div><button class="btn btn-defualt" id="form-login">Login</button></div>
+				<div><button type="button" class="btn btn-defualt" id="form-login" onclick="doLogin()">Login</button></div>
 			</form>
 			
 			<p id = "loginResult"></p>
@@ -42,7 +42,7 @@
 				</div>
 			</form>
 
-      			<h2 style="padding-top:45px"> Results: </h2>
+      			<h2 style="padding-top:45px"> Contacts: </h2>
 
 			<table class="table" id="search-table">
 				<thead>
