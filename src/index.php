@@ -19,6 +19,8 @@
 
 				<div><button class="btn btn-defualt" id="form-login">Login</button></div>
 			</form>
+			
+			<p id = "loginResult"></p>
 
 			<p style="padding-top: 25px"><a href="/createaccount">Don't have an account? Create one.</a></p>
 		</div>
