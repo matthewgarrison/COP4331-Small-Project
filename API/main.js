@@ -34,19 +34,12 @@ function doLogin() {
 			return;
 		}
 
-		// may change when displayname is implemented
-		//firstName = data.firstName;
-		//lastName = data.lastName;
-
-		// implement displayName later
-		//document.getElementById('displayName').innerHTML = firstName + " " + lastName;
-
 		document.getElementById('form-username').value = "";
 		document.getElementById('form-password').value = "";
 
 		// implement when more features complete
-		//showElement('access', true);
-		//showElement('loggedIn', true);
+		showElement('access', true);
+		showElement('loggedIn-container', true);
 
 		// this ID only applies to the button; ask to update to ID for the entire form
 		showElement('form-login', false);
@@ -74,7 +67,7 @@ function doLogout() {
 
    userID = 0;
 
-   showElement('loggedIn', false);
+   showElement('loggedIn-container', false);
    showElement('login', true);
    showElement('access', false);
 }
@@ -135,10 +128,19 @@ function searchContacts() {
 
             var i;
             for(i = 0; i < data.results.length; i++) {
-			   var item = document.createElement('li');
-			   item.setAttribute('list-style-type', 'none');
-			   item.appendChild(document.createTextNode(data.results[i]));
-			   list.appendChild(item);
+			   var opt = document.createElement('option');
+			   var strArray = list.results[i].split(" | ");
+			   var key = strArray.shift();
+			   var map = new Map();
+			   map.set(key, strArray);
+
+			   var contactTable = document.getElementById('search-table');
+			   var row = contactTable.insertRow(0);
+
+			   var idRow = row.insertCell(0);
+			   idRow.innerHTML = strArray[0];
+
+			   var
             }
          }
       };
