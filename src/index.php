@@ -36,7 +36,7 @@
 			<form class="form-inline">
 				<div class="form-group">
 					<input type="text" class="form-control" id="search-username" value="" name="username" style="width:500px"/>
-					<button class="btn btn-defualt" id="seach-submit"  style="margin-left:30px">Submit</button>
+					<button class="btn btn-defualt" id="search-submit"  style="margin-left:30px">Submit</button>
 				</div>
 			</form>
 
