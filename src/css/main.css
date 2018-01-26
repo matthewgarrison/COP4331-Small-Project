@@ -23,3 +23,7 @@ body {
 
 .remove {
 }
+
+.btn{
+    cursor: pointer;
+}
