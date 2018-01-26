@@ -38,10 +38,10 @@ function doLogin() {
 		document.getElementById('form-password').value = "";
 
 		// implement when more features complete
-		showElement('access', true);
+		// showElement('access', true);
 		showElement('loggedIn-container', true);
 
-		// this ID only applies to the button; ask to update to ID for the entire form
+		// this ID only applies to the button
 		showElement('form-login', false);
 	}
 	catch(error) {
