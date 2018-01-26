@@ -22,7 +22,7 @@ $(document).ready(function() {
 	});
 });
 
-function addContactRow(username, phoneNumber, email, notes){
+function addContactRow(username, phoneNumber, email, notes, id){
     var table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
 
     // New row at top of table (but below add contact boxes)
@@ -40,6 +40,16 @@ function addContactRow(username, phoneNumber, email, notes){
     // TODO: Put remove contact functionality here!!!!
     // buttonCell.setAttribute("onclick", "")
 }
+
+function clearContacts(){
+    var table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
+    var children = table.getElementsByTagName("tr");
+
+    while(children.length > 1){
+        table.removeChild(children[1]);
+    }
+}
+
 
 function doLogin() {
 
@@ -100,15 +110,6 @@ function showElement(id, flag) {
 	}
 }
 
-function doLogout() {
-
-   userID = 0;
-
-   showElement('loggedIn-container', false);
-   showElement('login', true);
-   showElement('access', false);
-}
-
 function addContact() {
 
    var name = document.getElementById('contactName').value;
@@ -140,6 +141,7 @@ function addContact() {
 
 
 function searchContacts() {
+   clearContacts();
    var target = document.getElementById('search-username').value;
 
    var payload = '{"search" : "' + target + '", "uID" : "' + userID + '"}';
@@ -147,64 +149,29 @@ function searchContacts() {
    var xhr = new XMLHttpRequest();
    xhr.open("POST", baseURL + "/SearchContact.php", true);
    xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
-
+   
    try {
-      xhr.onreadystatechange = function() {
-         if(xhr.status === XMLHttpRequest.DONE && xhr.response === 4) {
-            showElement('contactList', true);
-
-            document.getElementById('contactSearchResult').innerHTML = "Contacts retrieved.";
-
-            var data = JSON.parse(xhr.responseText);
-
-            var i;
-            for(i = 0; i < data.results.length; i++) {
-		var strArray = list.results[i].split(" | ");
-		var contactID = strArray[0];
-
-		var contactTable = document.getElementById('search-table');
-		var row = contactTable.insertRow(0);
-
-		var nameRow = row.insertCell(0);
-		nameRow.innerHTML = strArray[1];
-
-		var phoneRow = row.insertCell(1);
-		phoneRow.innerHTML = strArray[2];
-
-		var emailRow = row.insertCell(2);
-		emailRow.innerHTML = strArray[3];
-
-		var notesRow = row.insertCell(3);
-		notesRow.innerHTML = strArray[4];
-            }
-         }
-      };
-
-      xhr.send(payload);
-   }
-   catch(error) {
-      document.getElementById('contactSearchResult').innerHTML = error.message;
-   }
+   	xhr.send(payload);
+  	xhr.onload = function () {
+   	    if (xhr.readyState === xhr.DONE) {
+	
+		var data = JSON.parse(xhr.responseText);
+		searchResult = data.result;
+		for (str in searchResult){
+			contact = searchResult[str].split(" | ");
+			addContactRow(contact[1], contact[2], contact[3], contact[4], contact[0]);
+		}
+	}
+      }
+    }
+    catch(error) {
+		// include result of login in HTML
+		document.getElementById('searchResultText').innerHTML = error.message;
+    }
 }
 
-function deleteContact(contactID) {
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url + "/DeleteContact.php", true);
-	xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
-
-	try {
-		xhr.onreadystatechange = function() {
-			var payload = '{"userID" : "' + userID + '", "contactID" : "' + contactID + '"}';
-
-			var index = contactID.rowIndex;
-			document.getElementById('search-table').deleteRow(index);
-		};
-		xhr.send(payload);
-	}
-	catch(error) {
-		alert(error.message);
-	}
+// todo
+function deleteContacts() {
 
 }
 
