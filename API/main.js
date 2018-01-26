@@ -16,7 +16,7 @@ function doLogin() {
 	document.getElementById("loginResult").innerHTML = "";
 
 	// replace with appropriate varaible names
-	var payload = '{"username" : "' + userName + '", "password" : "' + password'"}';
+	var payload = '{"username" : "' + userName + '", "password" : "' + password + '"}';
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", baseURL + "/Login.php", false);
