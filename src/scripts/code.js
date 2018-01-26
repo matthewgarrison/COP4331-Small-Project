@@ -1,8 +1,7 @@
 var baseURL = "http://cop4331-2.com/API"
 
 var userID = 0;
-//var firstName = "";
-//var lastName = "";
+var lastSearch = "";
 
 $(document).ready(function() {
 	$('#form-password').keydown(function (event) {
@@ -14,10 +13,20 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+	$('#form-password-confirm').keydown(function (event) {
+	    var keypressed = event.keyCode || event.which;
+	    if (keypressed == 13) {
+	        addUser();
+	    }
+	});
+});
+
+$(document).ready(function() {
 	$('#search-username').keydown(function (event) {
 	    var keypressed = event.keyCode || event.which;
 	    if (keypressed == 13) {
 	        searchContacts();
+	        return false;
 	    }
 	});
 });
@@ -39,7 +48,7 @@ function addContactRow(username, phoneNumber, email, notes, id){
     buttonCell.setAttribute("style", "width:40px");
     
     var button = document.createElement("button");
-    button.setAttribute("class", "btn btn-default remove");
+    button.setAttribute("class", "btn btn-default");
     button.setAttribute("onclick", "deleteContact("+id+")");
     button.setAttribute("style", "width:40px");
     buttonCell.appendChild(button);
@@ -59,7 +68,6 @@ function clearContacts(){
         table.removeChild(children[1]);
     }
 }
-
 
 function doLogin() {
 
@@ -123,10 +131,10 @@ function showElement(id, flag) {
 
 function addContact() {
 
-   var name = document.getElementById('contactName').value;
-   var phone = document.getElementById('contactPhone').value;
-   var email = document.getElementById('contactEmail').value;
-   var notes = document.getElementById('contactNotes').value;
+   var name = document.getElementById('add-username').value;
+   var phone = document.getElementById('add-phone-number').value;
+   var email = document.getElementById('add-email').value;
+   var notes = document.getElementById('add-notes').value;
 
    var payload = '{"uID" : "' + userID + '", "name" : "' + name + '", "phoneNumber" : "' + phone + '", "email" : "' + email + '", "notes" : "' + notes + '"}';
 
@@ -135,25 +143,29 @@ function addContact() {
    xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
 
    try {
-      xhr.onreadystatechange = function() {
-         // if "OK" status-number, and request finished w/ response ready --> indicate success
-         if (xhr.status === XMLHttpRequest.DONE && xhr.response === 4) {
-            document.getElementById('addContactResult').innerHTML = "Contact added successfully.";
-         }
-      };
-
+   	xhr.onreadystatechange = function(){
+   		if (xhr.readyState === 4){
+  			 document.getElementById('add-username').value = '';
+  			 document.getElementById('add-phone-number').value = '';
+  			 document.getElementById('add-email').value = '';
+  			 document.getElementById('add-notes').value = '';
+  			 document.getElementById('search-username').value = lastSearch;
+  			 searchContacts();
+   		}
+   	}
       xhr.send(payload);
-
    }
    catch(error) {
       document.getElementById('addContactResult').innerHTML = error.message;
    }
+   
 }
 
 
 function searchContacts() {
    clearContacts();
    var target = document.getElementById('search-username').value;
+   lastSearch = target;
 
    var payload = '{"search" : "' + target + '", "uID" : "' + userID + '"}';
 
@@ -181,26 +193,30 @@ function searchContacts() {
     }
 }
 
-function deleteContacts(contactID) {
+function deleteContact(contactID) {
 
 
 	var payload = '{"userID" : "' + userID + '", "contactID" : "' + contactID + '"}';
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url + "/DeleteContact.php", true);
+	xhr.open("POST", baseURL + "/DeleteContact.php", true);
 	xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
 
 	try {
-		xhr.onreadystatechange = function() {
-
-			var index = contactID.rowIndex;
-			document.getElementById('search-table').deleteRow(index);
-		};
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState === 4){
+				document.getElementById('search-username').value = lastSearch;
+				searchContacts();
+			}
+		}
 		xhr.send(payload);
 	}
 	catch(error) {
 		alert(error.message);
 	}
+	
+	
+	
 
 }
 
@@ -244,5 +260,4 @@ function addUser() {
 		// include result of creation in HTML
 		document.getElementById('passwordCompareAndCreateResult').innerHTML = error.message;
 	}
-
 }
