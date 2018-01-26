@@ -32,8 +32,9 @@
 	<div class="row justify-content-center" >
 		<div class="col-md-12">
 
-			<h1 class="page-title" id="username" style="padding-bottom: 40px">Logged in as ""</h1>
-
+			<h1 class="page-title" id="username">Logged in as ""</h1>
+			<button class="btn btn-default" style="margin-bottom: 40px" onclick="location.reload()">Logout</button><br/>
+			
      			<label for="form-username">Search</label>
 			<form class="form-inline">
 				<div class="form-group">
