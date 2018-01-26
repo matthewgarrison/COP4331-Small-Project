@@ -14,7 +14,8 @@
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 
 		<!-- Scripts -->
-	    	<script src="scripts/code.js"></script>
+		<script src="scripts/code.js"></script>
+		<script src="scripts/md5.js"></script>
 
         
     </head>
