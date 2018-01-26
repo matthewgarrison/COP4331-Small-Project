@@ -14,7 +14,7 @@
 				</div>
 				<div class="form-group">
 					<label for="form-password">Password</label>
-					<input type="text" class="form-control" id="form-password" value="" name="password" />
+					<input type="password" class="form-control" id="form-password" value="" name="password" />
 				</div>
 
 				<div><button type="button" class="btn btn-defualt" id="form-login" onclick="doLogin()">Login</button></div>
@@ -32,10 +32,12 @@
 	<div class="row justify-content-center" >
 		<div class="col-md-12">
 
-			<h1 class="page-title" id="username">Logged in as ""</h1>
-			<button class="btn btn-default" style="margin-bottom: 40px" onclick="location.reload()">Logout</button><br/>
-			
-			<label for="form-username">Search</label>
+			<div>
+				<h1 class="page-title" id="username">Logged in as ""</h1>
+				<button class="btn btn-default" style="margin-bottom: 40px" onclick="location.reload()">Logout</button>
+			</div>
+
+     			<label for="search-username">Search</label>
 			<form class="form-inline">
 				<div class="form-group">
 					<input type="text" class="form-control" id="search-username" value="" name="username" style="width:500px"/>
@@ -62,7 +64,7 @@
 						<td><input type="text" class="form-control" id="add-phone-number" value=""/></td>
 						<td><input type="text" class="form-control" id="add-email" value=""/></td>
                         			<td><input type="text" class="form-control" id="add-notes" value=""/></td>
-                        			<td><button class="btn btn-defualt" id="add-submit"  style="width:40px"><i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="margin: -10px"></i></button></td>
+                        			<td><button class="btn btn-defualt" id="add-submit"  style="width:40px" onclick="addContact()"><i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="margin: -10px"></i></button></td>
 					</tr>
 				</tbody>
 			</table>
