@@ -13,6 +13,34 @@ $(document).ready(function() {
 	});
 });
 
+$(document).ready(function() {
+	$('#search-username').keydown(function (event) {
+	    var keypressed = event.keyCode || event.which;
+	    if (keypressed == 13) {
+	        searchContacts();
+	    }
+	});
+});
+
+function addContactRow(username, phoneNumber, email, notes){
+    var table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
+
+    // New row at top of table (but below add contact boxes)
+    var row = table.insertRow(1);
+
+    var buttonCell = row.insertCell(0);
+
+    row.insertCell(0).innerHTML = notes;
+    row.insertCell(0).innerHTML = email;
+    row.insertCell(0).innerHTML = phoneNumber;
+    row.insertCell(0).innerHTML = username;
+
+    buttonCell.setAttribute("style", "width:40px");
+
+    // TODO: Put remove contact functionality here!!!!
+    // buttonCell.setAttribute("onclick", "")
+}
+
 function doLogin() {
 
 	userID = 0;
