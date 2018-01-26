@@ -181,7 +181,10 @@ function searchContacts() {
     }
 }
 
-function deleteContact(contactID) {
+function deleteContacts(contactID) {
+
+
+	var payload = '{"userID" : "' + userID + '", "contactID" : "' + contactID + '"}';
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url + "/DeleteContact.php", true);
@@ -189,7 +192,6 @@ function deleteContact(contactID) {
 
 	try {
 		xhr.onreadystatechange = function() {
-			var payload = '{"userID" : "' + userID + '", "contactID" : "' + contactID + '"}';
 
 			var index = contactID.rowIndex;
 			document.getElementById('search-table').deleteRow(index);
