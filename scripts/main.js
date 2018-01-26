@@ -112,11 +112,7 @@ function addContact() {
 
 
 function searchContacts() {
-   var target = document.getElementById('targetName').value;
-	document.getElementById("searchContacts").innerHTML = "";
-
-   var contactList = document.getElementById('contactList');
-   contactList.innerHTML = "";
+   var target = document.getElementById('search-username').value;
 
    var payload = '{"search" : "' + target + '", "uID" : "' + userID + '"}';
 
