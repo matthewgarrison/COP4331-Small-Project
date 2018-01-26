@@ -4,6 +4,15 @@ var userID = 0;
 //var firstName = "";
 //var lastName = "";
 
+$(document).ready(function() {
+	$('#form-password').keydown(function (event) {
+	    var keypressed = event.keyCode || event.which;
+	    if (keypressed == 13) {
+	        doLogin();
+	    }
+	});
+});
+
 function doLogin() {
 
 	userID = 0;
