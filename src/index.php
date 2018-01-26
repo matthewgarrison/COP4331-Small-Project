@@ -27,7 +27,7 @@
 	</div>
 </div>
 
-<div class="container" id="loggedIn-container"  style="display:none; visibility:hidden;">
+<div class="container" id="loggedIn-container">
 
 	<div class="row justify-content-center" >
 		<div class="col-md-12">
@@ -42,23 +42,25 @@
 				</div>
 			</form>
 
-      			<h2 style="padding-top:45px"> Contacts: </h2>
+      			<h2 style="padding-top:45px"> Results: </h2>
 
-			<table class="table" id="search-table">
+			<table class="table" id="search-table" >
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>Phone Number</th>
 						<th>Email</th>
-						<th>Notes</th>
+                        			<th>Notes</th>
+                        			<th style="width:40px"></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>John Smith</td>
-						<td>(123) 456-7890</td>
-						<td>john@smith.com</td>
-						<td>This is an example contact</td>
+						<td><input type="text" class="form-control" id="add-username" value=""/></td>
+						<td><input type="text" class="form-control" id="add-phone-number" value=""/></td>
+						<td><input type="text" class="form-control" id="add-email" value=""/></td>
+                        			<td><input type="text" class="form-control" id="add-notes" value=""/></td>
+                        			<td><button class="btn btn-defualt" id="add-submit"  style="width:40px"><i class="fa fa-plus-circle fa-lg" aria-hidden="true" style="margin: -10px"></i></button></td>
 					</tr>
 				</tbody>
 			</table>
