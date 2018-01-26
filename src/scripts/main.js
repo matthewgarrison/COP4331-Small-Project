@@ -187,8 +187,24 @@ function searchContacts() {
    }
 }
 
-// todo
-function deleteContacts() {
+function deleteContact(contactID) {
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url + "/DeleteContact.php", true);
+	xhr.setRequestHeader("Content-type", "application/json; charset = UTF-8");
+
+	try {
+		xhr.onreadystatechange = function() {
+			var payload = '{"userID" : "' + userID + '", "contactID" : "' + contactID + '"}';
+
+			var index = contactID.rowIndex;
+			document.getElementById('search-table').deleteRow(index);
+		};
+		xhr.send(payload);
+	}
+	catch(error) {
+		alert(error.message);
+	}
 
 }
 
