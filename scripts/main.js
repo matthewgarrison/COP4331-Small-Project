@@ -135,17 +135,23 @@ function searchContacts() {
 
             var i;
             for(i = 0; i < data.results.length; i++) {
-			   var opt = document.createElement('option');
-			   var strArray = list.results[i].split(" | ");
-			   var key = strArray.shift();
-			   var map = new Map();
-			   map.set(key, strArray);
+		var strArray = list.results[i].split(" | ");
+		var contactID = strArray[0];
 
-			   var contactTable = document.getElementById('search-table');
-			   var row = contactTable.insertRow(0);
+		var contactTable = document.getElementById('search-table');
+		var row = contactTable.insertRow(0);
 
-			   var idRow = row.insertCell(0);
-			   idRow.innerHTML = strArray[0];
+		var nameRow = row.insertCell(0);
+		nameRow.innerHTML = strArray[1];
+
+		var phoneRow = row.insertCell(1);
+		phoneRow.innerHTML = strArray[2];
+
+		var emailRow = row.insertCell(2);
+		emailRow.innerHTML = strArray[3];
+
+		var notesRow = row.insertCell(3);
+		notesRow.innerHTML = strArray[4];
             }
          }
       };
