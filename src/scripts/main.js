@@ -37,7 +37,18 @@ function addContactRow(username, phoneNumber, email, notes, id){
     row.insertCell(0).innerHTML = username;
 
     buttonCell.setAttribute("style", "width:40px");
-    buttonCell.setAttribute("onclick", "deleteContact("+id+")");
+    
+    var button = document.createElement("button");
+    button.setAttribute("class", "btn btn-default");
+    button.setAttribute("onclick", "deleteContact("+id+")");
+    button.setAttribute("style", "width:40px");
+    buttonCell.appendChild(button);
+
+    var buttonIcon = document.createElement("i");
+    buttonIcon.setAttribute("class", "fa fa-minus-circle fa-lg");
+    buttonIcon.setAttribute("aria-hidden", "true");
+    buttonIcon.setAttribute("style", "margin:-10px");
+    button.appendChild(buttonIcon);
 }
 
 function clearContacts(){
