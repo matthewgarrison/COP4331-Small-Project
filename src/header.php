@@ -11,11 +11,12 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		
 		<!-- Styles -->
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<link rel="stylesheet" type="text/css" href="http://cop4331-2.com/css/main.css">
 
 		<!-- Scripts -->
-		<script src="scripts/code.js"></script>
-		<script src="scripts/md5.js"></script>
+		<script src="http://cop4331-2.com/scripts/code.js"></script>
+		<script src="http://cop4331-2.com/scripts/md5.js"></script>
+		<script src="https://use.fontawesome.com/947ec152be.js"></script>
 
         
     </head>
