@@ -35,7 +35,7 @@
 					$searchResults .= ",";
 				}
 				$searchCount++;
-				$searchResults .= '"' . $row["CONTACT_ID"] . ': ' . $row["NAME"] . ', ' . $row["PHONENUMBER"] . ', ' . $row["EMAIL"] . ', ' . $row["NOTES"] . '"';
+				$searchResults .= '"' . $row["CONTACT_ID"] . ', ' . $row["NAME"] . ', ' . $row["PHONENUMBER"] . ', ' . $row["EMAIL"] . ', ' . $row["NOTES"] . '"';
 			}
 		}
 		else
