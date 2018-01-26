@@ -16,7 +16,7 @@ function doLogin() {
 	document.getElementById("loginResult").innerHTML = "";
 
 	// replace with appropriate varaible names
-	var payload = '{"username" : "' + userName + '", "password" : "' + password + '"}';
+	var payload = '{"username" : "' + userName + '", "password" : "' + password +'"}';
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", baseURL + "/Login.php", false);
@@ -79,7 +79,7 @@ function addContact() {
    var email = document.getElementById('contactEmail').value;
    var notes = document.getElementById('contactNotes').value;
 
-   var payload = '{"uID" : "' + userID + '", "name" : "' + name + '", "phoneNumber" : "' + phone + '", "email" : "' + email + '", "notes" : "' + notes'"}';
+   var payload = '{"uID" : "' + userID + '", "name" : "' + name + '", "phoneNumber" : "' + phone + '", "email" : "' + email + '", "notes" : "' + notes + '"}';
 
    var xhr = new XMLHttpRequest();
    xhr.open("POST", baseURL + "/CreateContact.php", true);
@@ -109,7 +109,7 @@ function searchContacts() {
    var contactList = document.getElementById('contactList');
    contactList.innerHTML = "";
 
-   var payload = '{"search" : "' + target + '", "uID" : "' + userID'"}';
+   var payload = '{"search" : "' + target + '", "uID" : "' + userID + '"}';
 
    var xhr = new XMLHttpRequest();
    xhr.open("POST", baseURL + "/SearchContact.php", true);
