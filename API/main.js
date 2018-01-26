@@ -1,4 +1,4 @@
-var baseURL = "http://www.cop4331-2.com/API"
+var baseURL = "http://cop4331-2.com/API"
 
 var userID = 0;
 //var firstName = "";
@@ -11,12 +11,12 @@ function doLogin() {
 	//lastName = "";
 
 	var userName = document.getElementById("form-username").value;
-	var password = document.getElementById("form-password").value;
+	var password = md5(document.getElementById("form-password").value);
 
 	document.getElementById("loginResult").innerHTML = "";
 
 	// replace with appropriate varaible names
-	var payload = '{"username" : "' + userName + '", "password" : "' + password +'"}';
+	var payload = '{"username" : "' + userName + '", "password" : "' + password + '"}';
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", baseURL + "/Login.php", false);
@@ -29,7 +29,6 @@ function doLogin() {
 		userID = data.id;
 
 		if(userID == 0) {
-			// update when result is implemented
 			document.getElementById('loginResult').innerHTML = "Incorrect username/password combination. Please try again.";
 			return;
 		}
@@ -40,9 +39,10 @@ function doLogin() {
 		// implement when more features complete
 		// showElement('access', true);
 		showElement('loggedIn-container', true);
+		document.getElementById("username").innerHTML = 'Logged in as ' + data.username;
 
 		// this ID only applies to the button
-		showElement('form-login', false);
+		showElement('login-container', false);
 	}
 	catch(error) {
 		// include result of login in HTML
@@ -124,8 +124,6 @@ function searchContacts() {
 
             var data = JSON.parse(xhr.responseText);
 
-			var list = document.createElement('ul');
-
             var i;
             for(i = 0; i < data.results.length; i++) {
 			   var opt = document.createElement('option');
@@ -139,8 +137,6 @@ function searchContacts() {
 
 			   var idRow = row.insertCell(0);
 			   idRow.innerHTML = strArray[0];
-
-			   var
             }
          }
       };
