@@ -27,7 +27,7 @@
 	</div>
 </div>
 
-<div class="container" id="loggedIn-container">
+<div class="container" id="loggedIn-container" style="visibility:hidden">
 
 	<div class="row justify-content-center" >
 		<div class="col-md-12">
@@ -42,7 +42,7 @@
 				</div>
 			</form>
 
-      			<h2 style="padding-top:45px"> Results: </h2>
+      			<h2 style="padding-top:45px"> Contacts: </h2>
 
 			<table class="table" id="search-table" >
 				<thead>
