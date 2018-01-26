@@ -86,6 +86,7 @@ function doLogin() {
 		// showElement('access', true);
 		showElement('loggedIn-container', true);
 		document.getElementById("username").innerHTML = 'Logged in as ' + data.username;
+		searchContacts();
 
 		// this ID only applies to the button
 		showElement('login-container', false);
