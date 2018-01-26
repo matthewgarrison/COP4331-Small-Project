@@ -22,6 +22,7 @@ $(document).ready(function() {
 	});
 });
 
+// Creates a new contact row at the top of the search table
 function addContactRow(username, phoneNumber, email, notes, id){
     var table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
 
@@ -36,9 +37,7 @@ function addContactRow(username, phoneNumber, email, notes, id){
     row.insertCell(0).innerHTML = username;
 
     buttonCell.setAttribute("style", "width:40px");
-
-    // TODO: Put remove contact functionality here!!!!
-    // buttonCell.setAttribute("onclick", "")
+    buttonCell.setAttribute("onclick", "deleteContact("+id+")");
 }
 
 function clearContacts(){
