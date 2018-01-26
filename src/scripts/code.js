@@ -39,7 +39,7 @@ function addContactRow(username, phoneNumber, email, notes, id){
     buttonCell.setAttribute("style", "width:40px");
     
     var button = document.createElement("button");
-    button.setAttribute("class", "btn btn-default");
+    button.setAttribute("class", "btn btn-default remove");
     button.setAttribute("onclick", "deleteContact("+id+")");
     button.setAttribute("style", "width:40px");
     buttonCell.appendChild(button);
