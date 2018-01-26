@@ -1,6 +1,6 @@
 <?php
 	// Expects input in the form of {"search":"", "uID":""}
-	// The results field in the output JSON is an array of strings formatted as "Contact ID, name, phone number, email, notes"
+	// The results field in the output JSON is an array of strings formatted as "Contact ID | name | phone number | email | notes"
 	
 	$inData = getRequestInfo();
 	
@@ -35,7 +35,7 @@
 					$searchResults .= ",";
 				}
 				$searchCount++;
-				$searchResults .= '"' . $row["CONTACT_ID"] . ', ' . $row["NAME"] . ', ' . $row["PHONENUMBER"] . ', ' . $row["EMAIL"] . ', ' . $row["NOTES"] . '"';
+				$searchResults .= '"' . $row["CONTACT_ID"] . ' | ' . $row["NAME"] . ' | ' . $row["PHONENUMBER"] . ' | ' . $row["EMAIL"] . ' | ' . $row["NOTES"] . '"';
 			}
 		}
 		else
